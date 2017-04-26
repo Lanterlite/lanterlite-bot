@@ -90,7 +90,7 @@ public class LineBotController
 						Template temp = new ButtonsTemplate("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
 						TemplateMessage tempMsg = new TemplateMessage("ini altText", temp);
 						sendButtonTempalte(tempMsg, idTarget);
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         System.out.println("Exception is raised ");
                         e.printStackTrace();
                     }
