@@ -63,7 +63,7 @@ public class LineBotController
             }
 
 			String dataAdzan = "Subuh: 04.00\nDzuhur: 11.59\nAshar: 15.10\nMaghrib: 18.10\nIsya: 20.00";
-			String msg = payload.events[0].message;
+			String msg = payload.events[0].message.text;
 			String[] parts = msg.split(" ");
 			
 			if(parts[0].equals("bot")){
