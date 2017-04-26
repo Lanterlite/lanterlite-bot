@@ -15,7 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import retrofit2.Response;
 import java.util.Collections;
+
 import java.util.List;
+import java.util.ArrayList;
 
 import com.linecorp.bot.model.message.*;
 import com.linecorp.bot.model.message.template.*;
@@ -82,7 +84,7 @@ public class LineBotController
 				}
 				else if(parts[1].equals("reminder")){
 					try {
-						List<Action> actions = new List<>();						
+						List<Action> actions = new ArrayList<Action>();
 						Action action = new URIAction("Google", "http://google.com");
 						actions.add(action);
 						Template temp = new ButtonTemplate("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
