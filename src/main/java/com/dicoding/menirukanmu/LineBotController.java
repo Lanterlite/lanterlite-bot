@@ -34,9 +34,11 @@ public class LineBotController
         @RequestHeader("X-Line-Signature") String aXLineSignature,
         @RequestBody String aPayload)
     {
+		// Otentifikasi LINE
         final String text=String.format("The Signature is: %s",
             (aXLineSignature!=null && aXLineSignature.length() > 0) ? aXLineSignature : "N/A");
         System.out.println(text);
+
         final boolean valid=new LineSignatureValidator(lChannelSecret.getBytes()).validateSignature(aPayload.getBytes(), aXLineSignature);
         System.out.println("The signature is: " + (valid ? "valid" : "tidak valid"));
         if(aPayload!=null && aPayload.length() > 0)
@@ -50,15 +52,9 @@ public class LineBotController
         String idTarget = " ";
         String eventType = payload.events[0].type;
 
-        if (eventType.equals("join")){
-            if (payload.events[0].source.type.equals("group")){
-                replyToUser(payload.events[0].replyToken, "Hello Group");
-            }
-            if (payload.events[0].source.type.equals("room")){
-                replyToUser(payload.events[0].replyToken, "Hello Room");
-            }
-        } else if (eventType.equals("message")){
-            if (payload.events[0].source.type.equals("group")){
+		
+		if (eventType.equals("message")){
+			if (payload.events[0].source.type.equals("group")){
                 idTarget = payload.events[0].source.groupId;
             } else if (payload.events[0].source.type.equals("room")){
                 idTarget = payload.events[0].source.roomId;
@@ -66,29 +62,65 @@ public class LineBotController
                 idTarget = payload.events[0].source.userId;
             }
 
-            if (!payload.events[0].message.type.equals("text")){
-                replyToUser(payload.events[0].replyToken, "Unknown message");
-            } else {
-                msgText = payload.events[0].message.text;
-                msgText = msgText.toLowerCase();
-
-                if (!msgText.contains("bot leave")){
-                    try {
-                        getMessageData(msgText, idTarget);
+			String dataAdzan = "Subuh: 04.00\nDzuhur: 11.59\nAshar: 15.10\nMaghrib: 18.10\nIsya: 20.00";
+			String msg = payload.events[0].message;
+			String[] parts = msg.split(" ");
+			
+			if(parts[0].equals("bot")){
+				if(parts[1].equals("informasi")){
+					try {
+                        getMessageData(dataAdzan, idTarget);
                     } catch (IOException e) {
                         System.out.println("Exception is raised ");
                         e.printStackTrace();
                     }
-                } else {
-                    if (payload.events[0].source.type.equals("group")){
-                        leaveGR(payload.events[0].source.groupId, "group");
-                    } else if (payload.events[0].source.type.equals("room")){
-                        leaveGR(payload.events[0].source.roomId, "room");
-                    }
-                }
+				}
+			}
+		}
+			
+			
+		}
+		
+		/* changable */
+        // if (eventType.equals("join")){
+            // if (payload.events[0].source.type.equals("group")){
+                // replyToUser(payload.events[0].replyToken, "Hello Group");
+            // }
+            // if (payload.events[0].source.type.equals("room")){
+                // replyToUser(payload.events[0].replyToken, "Hello Room");
+            // }
+        // } else if (eventType.equals("message")){
+            // if (payload.events[0].source.type.equals("group")){
+                // idTarget = payload.events[0].source.groupId;
+            // } else if (payload.events[0].source.type.equals("room")){
+                // idTarget = payload.events[0].source.roomId;
+            // } else if (payload.events[0].source.type.equals("user")){
+                // idTarget = payload.events[0].source.userId;
+            // }
 
-            }
-        }
+            // if (!payload.events[0].message.type.equals("text")){
+                // replyToUser(payload.events[0].replyToken, "Unknown message");
+            // } else {
+                // msgText = payload.events[0].message.text;
+                // msgText = msgText.toLowerCase();
+
+                // if (!msgText.contains("bot leave")){
+                    // try {
+                        // getMessageData(msgText, idTarget);
+                    // } catch (IOException e) {
+                        // System.out.println("Exception is raised ");
+                        // e.printStackTrace();
+                    // }
+                // } else {
+                    // if (payload.events[0].source.type.equals("group")){
+                        // leaveGR(payload.events[0].source.groupId, "group");
+                    // } else if (payload.events[0].source.type.equals("room")){
+                        // leaveGR(payload.events[0].source.roomId, "room");
+                    // }
+                // }
+
+            // }
+        // }
          
         return new ResponseEntity<String>(HttpStatus.OK);
     }
