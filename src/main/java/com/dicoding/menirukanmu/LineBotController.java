@@ -14,6 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import retrofit2.Response;
+import model.*;
+import java.util.Collections;
+import java.util.List;
 
 import java.io.IOException;
 
@@ -70,6 +73,19 @@ public class LineBotController
 				if(parts[1].equals("informasi")){
 					try {
                         getMessageData(dataAdzan, idTarget);
+                    } catch (IOException e) {
+                        System.out.println("Exception is raised ");
+                        e.printStackTrace();
+                    }
+				}
+				else if(parts[1].equals("reminder")){
+					try {
+						List<Action> actions = new List<Action>();						
+						Action action = new URIAction("Google", "http://google.com");
+						actions.add(action);
+						Template temp = new ButtonTemplate("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
+						TemplateMessage tempMsg = new TemplateMessage("ini altText", temp);
+						sendButtonTempalte(tempMsg, idTarget);
                     } catch (IOException e) {
                         System.out.println("Exception is raised ");
                         e.printStackTrace();
@@ -143,7 +159,22 @@ public class LineBotController
             e.printStackTrace();
         }
     }
-
+	
+    private void sendButtonTempalte(Message message, String to){
+        PushMessage pushMessage = new PushMessage(to,message);
+        try {
+            Response<BotApiResponse> response = LineMessagingServiceBuilder
+            .create(lChannelAccessToken)
+            .build()
+            .pushMessage(pushMessage)
+            .execute();
+            System.out.println(response.code() + " " + response.message());
+        } catch (IOException e) {
+            System.out.println("Exception is raised ");
+            e.printStackTrace();
+        }
+    }
+	
     private void pushMessage(String sourceId, String txt){
         TextMessage textMessage = new TextMessage(txt);
         PushMessage pushMessage = new PushMessage(sourceId,textMessage);
