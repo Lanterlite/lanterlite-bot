@@ -14,10 +14,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import retrofit2.Response;
-import com.linecorp.bot.model.*;
 import java.util.Collections;
 import java.util.List;
 
+import com.linecorp.bot.model.message.*;
+import com.linecorp.bot.model.message.template.*;
+import com.linecorp.bot.model.action.*;
 import java.io.IOException;
 
 @RestController
