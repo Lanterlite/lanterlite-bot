@@ -77,9 +77,6 @@ public class LineBotController
 				}
 			}
 		}
-			
-			
-		}
 		
 		/* changable */
         // if (eventType.equals("join")){
