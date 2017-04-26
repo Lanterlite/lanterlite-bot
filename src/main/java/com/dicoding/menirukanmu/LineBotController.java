@@ -82,7 +82,7 @@ public class LineBotController
 				}
 				else if(parts[1].equals("reminder")){
 					try {
-						List<Action> actions = new List<Action>();						
+						List<Action> actions = new List<>();						
 						Action action = new URIAction("Google", "http://google.com");
 						actions.add(action);
 						Template temp = new ButtonTemplate("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
