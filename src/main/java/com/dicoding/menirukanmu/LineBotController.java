@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import retrofit2.Response;
-import model.*;
+import com.linecorp.bot.model.*;
 import java.util.Collections;
 import java.util.List;
 
