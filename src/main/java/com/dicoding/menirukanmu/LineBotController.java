@@ -84,11 +84,24 @@ public class LineBotController
 				}
 				else if(parts[1].equals("reminder")){
 					try {
+						// List<Action> actions = new ArrayList<Action>();
+						// Action action = new URIAction("Google", "http://google.com");
+						// actions.add(action);
+						// Template temp = new ButtonsTemplate("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
+						// TemplateMessage tempMsg = new TemplateMessage("ini altText", temp);
+
 						List<Action> actions = new ArrayList<Action>();
-						Action action = new URIAction("Google", "http://google.com");
-						actions.add(action);
-						Template temp = new ButtonsTemplate("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
+						Action action1 = new URIAction("Google", "http://google.com");
+						Action action2 = new URIAction("Google", "http://google.com");
+						Action action3 = new URIAction("Google", "http://google.com");
+						actions.add(action1);
+						actions.add(action2);
+						actions.add(action3);
+						CarouselColumn cColumn = new CarouselColumn("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
+						
+						Template temp = new CarouselTemplate(cColumn);
 						TemplateMessage tempMsg = new TemplateMessage("ini altText", temp);
+
 						sendButtonTempalte(tempMsg, idTarget);
                     } catch (Exception e) {
                         System.out.println("Exception is raised ");
