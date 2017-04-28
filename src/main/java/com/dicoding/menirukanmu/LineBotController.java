@@ -98,8 +98,9 @@ public class LineBotController
 						actions.add(action2);
 						actions.add(action3);
 						CarouselColumn cColumn = new CarouselColumn("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
-						
-						Template temp = new CarouselTemplate(cColumn);
+						List<CarouselColumn> cColumns = new ArrayList<CarouselColumn>();
+						cColumns.add(cColumn);
+						Template temp = new CarouselTemplate(cColumns);
 						TemplateMessage tempMsg = new TemplateMessage("ini altText", temp);
 
 						sendButtonTempalte(tempMsg, idTarget);
