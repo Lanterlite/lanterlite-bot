@@ -84,29 +84,38 @@ public class LineBotController
 				}
 				else if(parts[1].equals("reminder")){
 					try {
+						/* Button Template */
 						// List<Action> actions = new ArrayList<Action>();
 						// Action action = new URIAction("Google", "http://google.com");
 						// actions.add(action);
 						// Template temp = new ButtonsTemplate("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
 						// TemplateMessage tempMsg = new TemplateMessage("ini altText", temp);
 
-						List<Action> actions = new ArrayList<Action>();
-						Action action1 = new URIAction("Google", "http://google.com");
-						Action action2 = new URIAction("Google", "http://google.com");
-						Action action3 = new URIAction("Google", "http://google.com");
-						actions.add(action1);
-						actions.add(action2);
-						actions.add(action3);
-						CarouselColumn cColumn1 = new CarouselColumn("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
-						CarouselColumn cColumn2 = new CarouselColumn("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
-						CarouselColumn cColumn3 = new CarouselColumn("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
-						List<CarouselColumn> cColumns = new ArrayList<CarouselColumn>();
-						cColumns.add(cColumn1);
-						cColumns.add(cColumn2);
-						cColumns.add(cColumn3);
-						Template temp = new CarouselTemplate(cColumns);
-						TemplateMessage tempMsg = new TemplateMessage("ini altText", temp);
+						/* Carousel Template */
+						// List<Action> actions = new ArrayList<Action>();
+						// Action action1 = new URIAction("Google", "http://google.com");
+						// Action action2 = new URIAction("Google", "http://google.com");
+						// Action action3 = new URIAction("Google", "http://google.com");
+						// actions.add(action1);
+						// actions.add(action2);
+						// actions.add(action3);
+						// CarouselColumn cColumn1 = new CarouselColumn("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
+						// CarouselColumn cColumn2 = new CarouselColumn("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
+						// CarouselColumn cColumn3 = new CarouselColumn("https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png","Google","Ini alamat google", actions);
+						// List<CarouselColumn> cColumns = new ArrayList<CarouselColumn>();
+						// cColumns.add(cColumn1);
+						// cColumns.add(cColumn2);
+						// cColumns.add(cColumn3);
+						// Template temp = new CarouselTemplate(cColumns);
+						// TemplateMessage tempMsg = new TemplateMessage("ini altText", temp);
 
+						/* Confirm Template */
+						List<Action> actions = new ArrayList<Action>();
+						Action action = new URIAction("Google", "http://google.com");
+						actions.add(action);
+						Template temp = new ConfirmTemplate("google Text", actions);
+						TemplateMessage tempMsg = new TemplateMessage("ini altText", temp);
+						
 						sendButtonTempalte(tempMsg, idTarget);
                     } catch (Exception e) {
                         System.out.println("Exception is raised ");
