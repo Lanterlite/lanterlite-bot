@@ -113,7 +113,9 @@ public class LineBotController
 						List<Action> actions = new ArrayList<Action>();
 						Action action = new URIAction("Google", "http://google.com");
 						actions.add(action);
-						Template temp = new ConfirmTemplate("google Text", actions);
+						Action actionLeft = new URIAction("Action Left", "http://google.com");
+						Action actionRight = new URIAction("Action Right", "http://google.com");
+						Template temp = new ConfirmTemplate("google Text", actionLeft, actionRight);
 						TemplateMessage tempMsg = new TemplateMessage("ini altText", temp);
 						
 						sendButtonTempalte(tempMsg, idTarget);
