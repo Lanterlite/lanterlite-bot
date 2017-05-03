@@ -76,7 +76,7 @@ public class LineBotController
 		if (eventType.equals("message")){
 			
 			/* JSON Reader */
-			private static final String filePath = "BotProduktif.json";
+			final String filePath = "BotProduktif.json";
 				
 			try {
 				// read the json file
