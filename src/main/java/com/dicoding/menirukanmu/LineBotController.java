@@ -138,11 +138,11 @@ public class LineBotController
                         // System.out.println("Exception is raised ");
                         // e.printStackTrace();
                     // }
-					final String filePath = "BotProduktif.json";
+					final String filePath = "src/main/resources/BotProduktif.json";
 
 					try {
 						// read the json file
-						FileReader reader = new FileReader("BotProduktif.json");
+						FileReader reader = new FileReader("src/main/resources/BotProduktif.json");
 
 						JSONParser jsonParser = new JSONParser();
 						JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
