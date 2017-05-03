@@ -139,7 +139,7 @@ public class LineBotController
                         // e.printStackTrace();
                     // }
 					final String filePath = "BotProduktif.json";
-						
+
 					try {
 						// read the json file
 						FileReader reader = new FileReader("BotProduktif.json");
@@ -162,14 +162,9 @@ public class LineBotController
 							e.printStackTrace();
 						}
 
-					} catch (FileNotFoundException ex) {
-						ex.printStackTrace();
-					} catch (IOException ex) {
-						ex.printStackTrace();
-					} catch (ParseException ex) {
-						ex.printStackTrace();
-					} catch (NullPointerException ex) {
-						ex.printStackTrace();
+					} catch (Exception ex) {
+						// ex.printStackTrace();
+						getMessageData(ex.getMessageData(), idTarget);
 					}
 				}
 				else if(parts[1].equals("reminder")){
