@@ -72,14 +72,15 @@ public class LineBotController
         String idTarget = " ";
         String eventType = payload.events[0].type;
 
-		String subuh;
-		String dzuhur;
-		String ashr;
-		String maghrib;
-		String isya;
 		
 		if (eventType.equals("message")){
-			
+
+			String subuh = " ";
+			String dzuhur = " ";
+			String ashr = " ";
+			String maghrib = " ";
+			String isya = " ";
+		
 			/* JSON Reader */
 			final String filePath = "BotProduktif.json";
 				
