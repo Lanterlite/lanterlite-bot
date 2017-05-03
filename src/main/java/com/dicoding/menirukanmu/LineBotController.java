@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Iterator;
+import java.lang.Exception;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -164,7 +165,7 @@ public class LineBotController
 
 					} catch (Exception ex) {
 						// ex.printStackTrace();
-						getMessageData(ex.getMessageData(), idTarget);
+						getMessageData(ex.getMessage(), idTarget);
 					}
 				}
 				else if(parts[1].equals("reminder")){
