@@ -75,28 +75,28 @@ public class LineBotController
 		
 		if (eventType.equals("message")){
 
-			// String subuh = " ";
-			// String dzuhur = " ";
-			// String ashr = " ";
-			// String maghrib = " ";
-			// String isya = " ";
+			String subuh = " ";
+			String dzuhur = " ";
+			String ashr = " ";
+			String maghrib = " ";
+			String isya = " ";
 		
 			/* JSON Reader */
 			final String filePath = "BotProduktif.json";
 				
 				try {
 				// read the json file
-				FileReader reader = new FileReader(filePath);
+				FileReader reader = new FileReader("BotProduktif.json");
 
 				JSONParser jsonParser = new JSONParser();
 				JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
 
 				// get a String from the JSON object
-				String subuh = (String) jsonObject.get("subuh");
-				String dzuhur = (String) jsonObject.get("dzuhur");
-				String ashr = (String) jsonObject.get("ashr");
-				String maghrib = (String) jsonObject.get("maghrib");
-				String isya = (String) jsonObject.get("isya");
+				subuh = (String) jsonObject.get("subuh");
+				dzuhur = (String) jsonObject.get("dzuhur");
+				ashr = (String) jsonObject.get("ashr");
+				maghrib = (String) jsonObject.get("maghrib");
+				isya = (String) jsonObject.get("isya");
 
 			} catch (FileNotFoundException ex) {
 				ex.printStackTrace();
