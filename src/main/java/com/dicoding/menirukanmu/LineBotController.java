@@ -108,16 +108,16 @@ public class LineBotController
 
 			} catch (FileNotFoundException ex) {
 				// ex.printStackTrace();
-				getMessageData("error", idTarget);
+				// getMessageData("error", idTarget);
 			} catch (IOException ex) {
 				// ex.printStackTrace();
-				getMessageData("error", idTarget);
+				// getMessageData("error", idTarget);
 			} catch (ParseException ex) {
 				// ex.printStackTrace();
-				getMessageData("error", idTarget);
+				// getMessageData("error", idTarget);
 			} catch (NullPointerException ex) {
 				// ex.printStackTrace();
-				getMessageData("error", idTarget);
+				// getMessageData("error", idTarget);
 			}
 			/* End JSON Reader */
 			
