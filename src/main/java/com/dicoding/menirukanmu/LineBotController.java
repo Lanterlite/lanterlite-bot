@@ -116,7 +116,9 @@ public class LineBotController
                 idTarget = payload.events[0].source.userId;
             }
 
-			String dataAdzan = "Subuh: " + subuh + "\nDzuhur: " + dzuhur + "\nAshr: " + ashr + "\nMaghrib: " + maghrib + "\nIsya: " + isya;
+			String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString()
+
+//			"Subuh: " + subuh + "\nDzuhur: " + dzuhur + "\nAshr: " + ashr + "\nMaghrib: " + maghrib + "\nIsya: " + isya;
 			String msg = payload.events[0].message.text;
 			String[] parts = msg.split(" ");
 			
