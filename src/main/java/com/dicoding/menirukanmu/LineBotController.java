@@ -83,45 +83,16 @@ public class LineBotController
                 idTarget = payload.events[0].source.userId;
             }
 			
-			String subuh = "subuh";
-			String dzuhur = "dzuhur";
-			String ashr = "ashr";
-			String maghrib = "maghrib";
-			String isya = "isya";
+			// String subuh = "subuh";
+			// String dzuhur = "dzuhur";
+			// String ashr = "ashr";
+			// String maghrib = "maghrib";
+			// String isya = "isya";
 		
+
+
 			/* JSON Reader */
 			/*
-			final String filePath = "BotProduktif.json";
-				
-			try {
-				// read the json file
-				FileReader reader = new FileReader("BotProduktif.json");
-
-				JSONParser jsonParser = new JSONParser();
-				JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
-
-				// get a String from the JSON object
-				subuh = (String) jsonObject.get("subuh");
-				dzuhur = (String) jsonObject.get("dzuhur");
-				ashr = (String) jsonObject.get("ashr");
-				maghrib = (String) jsonObject.get("maghrib");
-				isya = (String) jsonObject.get("isya");
-
-			} catch (FileNotFoundException ex) {
-				// ex.printStackTrace();
-				// getMessageData("error", idTarget);
-			} catch (IOException ex) {
-				// ex.printStackTrace();
-				// getMessageData("error", idTarget);
-			} catch (ParseException ex) {
-				// ex.printStackTrace();
-				// getMessageData("error", idTarget);
-			} catch (NullPointerException ex) {
-				// ex.printStackTrace();
-				// getMessageData("error", idTarget);
-			}
-			*/
-			/* End JSON Reader */
 
 			JSONParser parser = new JSONParser();
 
@@ -150,9 +121,10 @@ public class LineBotController
 				e.printStackTrace();
 			}
 
-		
+			*/
+			/* End JSON Reader */
 
-			String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString();
+			// String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString();
 
 			// String dataAdzan = "Subuh: " + subuh + "\nDzuhur: " + dzuhur + "\nAshr: " + ashr + "\nMaghrib: " + maghrib + "\nIsya: " + isya;
 			String msg = payload.events[0].message.text;
@@ -161,7 +133,35 @@ public class LineBotController
 			if(parts[0].equals("bot")){
 				if(parts[1].equals("informasi")){
 					try {
-                        getMessageData(dataAdzan, idTarget);
+						final String filePath = "BotProduktif.json";
+							
+						try {
+							// read the json file
+							FileReader reader = new FileReader("BotProduktif.json");
+
+							JSONParser jsonParser = new JSONParser();
+							JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
+
+							// get a String from the JSON object
+							String subuh = (String) jsonObject.get("subuh");
+							String dzuhur = (String) jsonObject.get("dzuhur");
+							String ashr = (String) jsonObject.get("ashr");
+							String maghrib = (String) jsonObject.get("maghrib");
+							String isya = (String) jsonObject.get("isya");
+
+							String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString();
+							getMessageData(dataAdzan, idTarget);
+
+						} catch (FileNotFoundException ex) {
+							ex.printStackTrace();
+						} catch (IOException ex) {
+							ex.printStackTrace();
+						} catch (ParseException ex) {
+							ex.printStackTrace();
+						} catch (NullPointerException ex) {
+							ex.printStackTrace();
+						}
+						// getMessageData(dataAdzan, idTarget);
                     } catch (IOException e) {
                         System.out.println("Exception is raised ");
                         e.printStackTrace();
