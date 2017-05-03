@@ -84,7 +84,7 @@ public class LineBotController
 			/* JSON Reader */
 			final String filePath = "BotProduktif.json";
 				
-				// try {
+				try {
 				// read the json file
 				FileReader reader = new FileReader(filePath);
 
@@ -98,15 +98,15 @@ public class LineBotController
 				String maghrib = (String) jsonObject.get("maghrib");
 				String isya = (String) jsonObject.get("isya");
 
-			// } catch (FileNotFoundException ex) {
-				// ex.printStackTrace();
-			// } catch (IOException ex) {
-				// ex.printStackTrace();
-			// } catch (ParseException ex) {
-				// ex.printStackTrace();
-			// } catch (NullPointerException ex) {
-				// ex.printStackTrace();
-			// }
+			} catch (FileNotFoundException ex) {
+				ex.printStackTrace();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			} catch (ParseException ex) {
+				ex.printStackTrace();
+			} catch (NullPointerException ex) {
+				ex.printStackTrace();
+			}
 			/* End JSON Reader */
 			
 			if (payload.events[0].source.type.equals("group")){
