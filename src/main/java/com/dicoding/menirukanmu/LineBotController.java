@@ -75,16 +75,16 @@ public class LineBotController
 		
 		if (eventType.equals("message")){
 
-			String subuh = " ";
-			String dzuhur = " ";
-			String ashr = " ";
-			String maghrib = " ";
-			String isya = " ";
+			String subuh = "subuh";
+			String dzuhur = "dzuhur";
+			String ashr = "ashr";
+			String maghrib = "maghrib";
+			String isya = "isya";
 		
 			/* JSON Reader */
 			final String filePath = "BotProduktif.json";
 				
-				try {
+			try {
 				// read the json file
 				FileReader reader = new FileReader("BotProduktif.json");
 
