@@ -24,6 +24,18 @@ import com.linecorp.bot.model.message.template.*;
 import com.linecorp.bot.model.action.*;
 import java.io.IOException;
 
+/* JSON Reader */
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Iterator;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+/* End JSON Reader */
+
+
 @RestController
 @RequestMapping(value="/linebot")
 public class LineBotController
@@ -41,6 +53,7 @@ public class LineBotController
         @RequestHeader("X-Line-Signature") String aXLineSignature,
         @RequestBody String aPayload)
     {
+		
 		// Otentifikasi LINE
         final String text=String.format("The Signature is: %s",
             (aXLineSignature!=null && aXLineSignature.length() > 0) ? aXLineSignature : "N/A");
@@ -61,6 +74,35 @@ public class LineBotController
 
 		
 		if (eventType.equals("message")){
+			
+			/* JSON Reader */
+			private static final String filePath = "BotProduktif.json";
+				
+			try {
+				// read the json file
+				FileReader reader = new FileReader(filePath);
+
+				JSONParser jsonParser = new JSONParser();
+				JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
+
+				// get a String from the JSON object
+				String subuh = (String) jsonObject.get("subuh");
+				String dzuhur = (String) jsonObject.get("dzuhur");
+				String ashr = (String) jsonObject.get("ashr");
+				String maghrib = (String) jsonObject.get("maghrib");
+				String isya = (String) jsonObject.get("isya");
+
+			} catch (FileNotFoundException ex) {
+				ex.printStackTrace();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			} catch (ParseException ex) {
+				ex.printStackTrace();
+			} catch (NullPointerException ex) {
+				ex.printStackTrace();
+			}
+			/* End JSON Reader */
+			
 			if (payload.events[0].source.type.equals("group")){
                 idTarget = payload.events[0].source.groupId;
             } else if (payload.events[0].source.type.equals("room")){
@@ -69,7 +111,7 @@ public class LineBotController
                 idTarget = payload.events[0].source.userId;
             }
 
-			String dataAdzan = "Subuh: 04.00\nDzuhur: 11.59\nAshar: 15.10\nMaghrib: 18.10\nIsya: 20.00";
+			String dataAdzan = "Subuh: " + subuh + "\nDzuhur: " + dzuhur + "\nAshr: " + ashr + "\nMaghrib: " + mahrib + "\nIsya: " + isya;
 			String msg = payload.events[0].message.text;
 			String[] parts = msg.split(" ");
 			
