@@ -75,6 +75,14 @@ public class LineBotController
 		
 		if (eventType.equals("message")){
 
+			if (payload.events[0].source.type.equals("group")){
+                idTarget = payload.events[0].source.groupId;
+            } else if (payload.events[0].source.type.equals("room")){
+                idTarget = payload.events[0].source.roomId;
+            } else if (payload.events[0].source.type.equals("user")){
+                idTarget = payload.events[0].source.userId;
+            }
+			
 			String subuh = "subuh";
 			String dzuhur = "dzuhur";
 			String ashr = "ashr";
@@ -99,23 +107,20 @@ public class LineBotController
 				isya = (String) jsonObject.get("isya");
 
 			} catch (FileNotFoundException ex) {
-				ex.printStackTrace();
+				// ex.printStackTrace();
+				getMessageData(dataAdzan, idTarget);
 			} catch (IOException ex) {
-				ex.printStackTrace();
+				// ex.printStackTrace();
+				getMessageData(dataAdzan, idTarget);
 			} catch (ParseException ex) {
-				ex.printStackTrace();
+				// ex.printStackTrace();
+				getMessageData(dataAdzan, idTarget);
 			} catch (NullPointerException ex) {
-				ex.printStackTrace();
+				// ex.printStackTrace();
+				getMessageData(dataAdzan, idTarget);
 			}
 			/* End JSON Reader */
 			
-			if (payload.events[0].source.type.equals("group")){
-                idTarget = payload.events[0].source.groupId;
-            } else if (payload.events[0].source.type.equals("room")){
-                idTarget = payload.events[0].source.roomId;
-            } else if (payload.events[0].source.type.equals("user")){
-                idTarget = payload.events[0].source.userId;
-            }
 
 			String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString();
 
