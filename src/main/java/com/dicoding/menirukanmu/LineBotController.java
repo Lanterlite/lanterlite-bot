@@ -84,7 +84,7 @@ public class LineBotController
 			/* JSON Reader */
 			final String filePath = "BotProduktif.json";
 				
-				try {
+				// try {
 				// read the json file
 				FileReader reader = new FileReader(filePath);
 
@@ -98,15 +98,15 @@ public class LineBotController
 				maghrib = (String) jsonObject.get("maghrib");
 				isya = (String) jsonObject.get("isya");
 
-			} catch (FileNotFoundException ex) {
-				ex.printStackTrace();
-			} catch (IOException ex) {
-				ex.printStackTrace();
-			} catch (ParseException ex) {
-				ex.printStackTrace();
-			} catch (NullPointerException ex) {
-				ex.printStackTrace();
-			}
+			// } catch (FileNotFoundException ex) {
+				// ex.printStackTrace();
+			// } catch (IOException ex) {
+				// ex.printStackTrace();
+			// } catch (ParseException ex) {
+				// ex.printStackTrace();
+			// } catch (NullPointerException ex) {
+				// ex.printStackTrace();
+			// }
 			/* End JSON Reader */
 			
 			if (payload.events[0].source.type.equals("group")){
@@ -117,9 +117,9 @@ public class LineBotController
                 idTarget = payload.events[0].source.userId;
             }
 
-			String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString();
+			// String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString();
 
-//			"Subuh: " + subuh + "\nDzuhur: " + dzuhur + "\nAshr: " + ashr + "\nMaghrib: " + maghrib + "\nIsya: " + isya;
+			String dataAdzan = "Subuh: " + subuh + "\nDzuhur: " + dzuhur + "\nAshr: " + ashr + "\nMaghrib: " + maghrib + "\nIsya: " + isya;
 			String msg = payload.events[0].message.text;
 			String[] parts = msg.split(" ");
 			
