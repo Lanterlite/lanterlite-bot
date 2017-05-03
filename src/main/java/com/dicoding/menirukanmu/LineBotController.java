@@ -142,8 +142,6 @@ public class LineBotController
 				System.out.println(maghrib);
 				isya = (String) jsonObject.get("isya");
 				System.out.println(isya);
-			}
-
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
