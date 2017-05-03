@@ -90,6 +90,7 @@ public class LineBotController
 			String isya = "isya";
 		
 			/* JSON Reader */
+			/*
 			final String filePath = "BotProduktif.json";
 				
 			try {
@@ -119,8 +120,39 @@ public class LineBotController
 				// ex.printStackTrace();
 				// getMessageData("error", idTarget);
 			}
+			*/
 			/* End JSON Reader */
-			
+
+			JSONParser parser = new JSONParser();
+
+			try {
+
+				Object obj = parser.parse(new FileReader("BotProduktif.json"));
+
+				JSONObject jsonObject = (JSONObject) obj;
+				System.out.println(jsonObject);
+
+				subuh = (String) jsonObject.get("subuh");
+				System.out.println(subuh);
+				dzuhur = (String) jsonObject.get("dzuhur");
+				System.out.println(dzuhur);
+				ashr = (String) jsonObject.get("ashr");
+				System.out.println(ashr);
+				maghrib = (String) jsonObject.get("maghrib");
+				System.out.println(maghrib);
+				isya = (String) jsonObject.get("isya");
+				System.out.println(isya);
+			}
+
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+		
 
 			String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString();
 
