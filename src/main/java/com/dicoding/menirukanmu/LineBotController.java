@@ -75,11 +75,11 @@ public class LineBotController
 		
 		if (eventType.equals("message")){
 
-			String subuh = " ";
-			String dzuhur = " ";
-			String ashr = " ";
-			String maghrib = " ";
-			String isya = " ";
+			// String subuh = " ";
+			// String dzuhur = " ";
+			// String ashr = " ";
+			// String maghrib = " ";
+			// String isya = " ";
 		
 			/* JSON Reader */
 			final String filePath = "BotProduktif.json";
@@ -92,11 +92,11 @@ public class LineBotController
 				JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
 
 				// get a String from the JSON object
-				subuh = (String) jsonObject.get("subuh");
-				dzuhur = (String) jsonObject.get("dzuhur");
-				ashr = (String) jsonObject.get("ashr");
-				maghrib = (String) jsonObject.get("maghrib");
-				isya = (String) jsonObject.get("isya");
+				String subuh = (String) jsonObject.get("subuh");
+				String dzuhur = (String) jsonObject.get("dzuhur");
+				String ashr = (String) jsonObject.get("ashr");
+				String maghrib = (String) jsonObject.get("maghrib");
+				String isya = (String) jsonObject.get("isya");
 
 			// } catch (FileNotFoundException ex) {
 				// ex.printStackTrace();
@@ -117,9 +117,9 @@ public class LineBotController
                 idTarget = payload.events[0].source.userId;
             }
 
-			// String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString();
+			String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString();
 
-			String dataAdzan = "Subuh: " + subuh + "\nDzuhur: " + dzuhur + "\nAshr: " + ashr + "\nMaghrib: " + maghrib + "\nIsya: " + isya;
+			// String dataAdzan = "Subuh: " + subuh + "\nDzuhur: " + dzuhur + "\nAshr: " + ashr + "\nMaghrib: " + maghrib + "\nIsya: " + isya;
 			String msg = payload.events[0].message.text;
 			String[] parts = msg.split(" ");
 			
