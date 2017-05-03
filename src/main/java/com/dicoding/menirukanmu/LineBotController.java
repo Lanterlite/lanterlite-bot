@@ -82,67 +82,17 @@ public class LineBotController
             } else if (payload.events[0].source.type.equals("user")){
                 idTarget = payload.events[0].source.userId;
             }
-			
-			// String subuh = "subuh";
-			// String dzuhur = "dzuhur";
-			// String ashr = "ashr";
-			// String maghrib = "maghrib";
-			// String isya = "isya";
-		
 
-
-			/* JSON Reader */
-			/*
-
-			JSONParser parser = new JSONParser();
-
-			try {
-
-				Object obj = parser.parse(new FileReader("BotProduktif.json"));
-
-				JSONObject jsonObject = (JSONObject) obj;
-				System.out.println(jsonObject);
-
-				subuh = (String) jsonObject.get("subuh");
-				System.out.println(subuh);
-				dzuhur = (String) jsonObject.get("dzuhur");
-				System.out.println(dzuhur);
-				ashr = (String) jsonObject.get("ashr");
-				System.out.println(ashr);
-				maghrib = (String) jsonObject.get("maghrib");
-				System.out.println(maghrib);
-				isya = (String) jsonObject.get("isya");
-				System.out.println(isya);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-
-			*/
-			/* End JSON Reader */
-
-			// String dataAdzan = new StringBuilder().append("Subuh: ").append(subuh).append("\nDzuhur: ").append(dzuhur).append("\nAshr: ").append(ashr).append("\nMaghrib: ").append(maghrib).append("\nIsya: ").append(isya).toString();
-
-			// String dataAdzan = "Subuh: " + subuh + "\nDzuhur: " + dzuhur + "\nAshr: " + ashr + "\nMaghrib: " + maghrib + "\nIsya: " + isya;
 			String msg = payload.events[0].message.text;
 			String[] parts = msg.split(" ");
 			
 			if(parts[0].equals("bot")){
 				if(parts[1].equals("informasi")){
-					// try {
-                        // getMessageData(dataAdzan, idTarget);
-                    // } catch (IOException e) {
-                        // System.out.println("Exception is raised ");
-                        // e.printStackTrace();
-                    // }
 					final String filePath = "src/main/resources/BotProduktif.json";
 
 					try {
 						// read the json file
-						FileReader reader = new FileReader("src/main/resources/BotProduktif.json");
+						FileReader reader = new FileReader(filePath);
 
 						JSONParser jsonParser = new JSONParser();
 						JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
